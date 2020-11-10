@@ -16,5 +16,9 @@ void list_set_data(node_t * node, void * data) {
 }
 
 node_t * list_next(note_t * node, void * data) {
+    return node->suivant;
+}
+
+note_t * list_insert(note_t * head, void * data) {
 
 }
