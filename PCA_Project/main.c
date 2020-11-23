@@ -1,4 +1,10 @@
-#include "node.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+    void * data;
+    struct node * next;
+} node_t;
 
 // Créé une liste vide
 node_t * list_create(void) {
@@ -7,7 +13,7 @@ node_t * list_create(void) {
 
 // Récupérer la valeur d'un maillon
 void * list_get_data(const node_t * node) {
-    return node->data;
+    printf("%d", node->data);
 }
 
 // Changer la valeur d'un maillon
@@ -17,20 +23,20 @@ void list_set_data(node_t * node, void * data) {
 
 // Passer au maillon suivant
 node_t * list_next(node_t * node, void * data) {
-    return node->suivant;
+    return node->next;
 }
 
 // Ajouter un maillon en tête de liste
 node_t * list_insert(node_t * head, void * data) {
     node_t * node = (node_t*)malloc(sizeof(node_t));
-    if (node_t == NULL)
+    if (node == NULL)
         return NULL;
     node->data = data;
     node->next = head;
     return node;
 }
 
-// Ajouter un maillon dans la liste
+// Ajouter un maillon en queue de liste
 node_t * list_append(node_t * head, void * data) {
 
     /*node_t * node = malloc(sizeof(node_t));
@@ -40,12 +46,12 @@ node_t * list_append(node_t * head, void * data) {
     node->data = data;
     node->next = NULL;
 
-    node_t * suivant = head;
-    while (suivant->next != NULL) {
-        suivant = suivant->next;
+    node_t * next = head;
+    while (next->next != NULL) {
+        next = next->next;
     }
 
-    suivant->next = node;
+    next->next = node;
     return node;*/
 
     node_t * node = (node_t*)malloc(sizeof(node_t));
@@ -74,7 +80,7 @@ node_t * list_remove(node_t * head, void * data) {
 
     if (temp != NULL && temp->next == data) {
         head = temp->next;
-        delete temp;
+        free(temp);
         return head;
     }
 
@@ -87,7 +93,7 @@ node_t * list_remove(node_t * head, void * data) {
 
     prev->next = temp->next;
 
-    delete temp;
+    free(temp);
     return head;
 }
 
@@ -97,10 +103,10 @@ node_t * list_headRemove(node_t * head) {
     if (head == NULL)
         return NULL;
 
-    note_t * temp = head;
+    node_t * temp = head;
     head = head->next;
 
-    delete temp;
+    free(temp);
     return head;
 }
 
@@ -118,10 +124,28 @@ void list_destroy(node_t * head) {
     head = NULL;
 }
 
-// Fonction d'affichage de la liste
 void list_print(node_t * head) {
   while (head != NULL) {
-     printf(" %d ", head->data);
+     printf("%d->", head->data);
      head = head->next;
   }
+  printf("NULL");
+}
+
+
+int main(void) {
+    node_t * head = list_create();
+
+    head = list_insert(head, 5);
+    head = list_insert(head, 8);
+    head = list_insert(head, 19);
+    head = list_headRemove(head);
+    head = list_remove(head, 5);
+    head = list_append(head, 32);
+    list_get_data(head);
+    printf("||");
+    list_set_data(head, 4);
+    list_print(head);
+
+    return 0;
 }

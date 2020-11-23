@@ -118,7 +118,6 @@ void list_destroy(node_t * head) {
     head = NULL;
 }
 
-// Fonction d'affichage de la liste
 void list_print(node_t * head) {
   while (head != NULL) {
      printf(" %d ", head->data);

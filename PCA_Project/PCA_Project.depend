@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1605570263 source:c:\users\ewena\documents\2020_ubo\dev\pca\pca_project\main.c
+	<stdio.h>
+	<stdlib.h>
+

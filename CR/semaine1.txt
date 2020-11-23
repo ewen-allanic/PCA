@@ -1,0 +1,5 @@
+Compte rendu : Semaine 1
+
+J'ai réalisé toutes les fonctions concernant la node, excepté les fonctions de suppression sur lesquelles je suis bloqué et que j'essaye de terminer au plus vite.
+J'ai également préparé le projet avec ses ressources afin d'être plus efficace dans l'organisation. (Création de dossiers regroupant chaque ressources distinctes et d'un Makefile compilant les sources)
+Par la suite j'organiserai chaque ressource en fonction de son utilité (ou module) dans le projet pour me retrouver plus facilement. 

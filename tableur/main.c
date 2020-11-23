@@ -1,5 +1,4 @@
-#include "node.h"
-
+#include <stdio.h>
 // Créé une liste vide
 node_t * list_create(void) {
     return (node_t *)NULL;
@@ -118,10 +117,18 @@ void list_destroy(node_t * head) {
     head = NULL;
 }
 
-// Fonction d'affichage de la liste
 void list_print(node_t * head) {
   while (head != NULL) {
      printf(" %d ", head->data);
      head = head->next;
   }
+}
+
+int main(void) {
+    node_t * head = list_create();
+
+    head = list_insert(&head, 5);
+    list_print(head);
+
+    return 0;
 }
