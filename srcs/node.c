@@ -1,19 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "node.h"
 
-typedef struct node {
-    void * data;
-    struct node * next;
-} node_t;
-
-// Créé une liste vide
+// CrÃ©Ã© une liste vide
 node_t * list_create(void) {
     return (node_t *)NULL;
 }
 
-// Récupérer la valeur d'un maillon
+// RÃ©cupÃ©rer la valeur d'un maillon
 void * list_get_data(const node_t * node) {
-    printf("%d", node->data);
+    printf("%p", node->data);
 }
 
 // Changer la valeur d'un maillon
@@ -23,10 +17,10 @@ void list_set_data(node_t * node, void * data) {
 
 // Passer au maillon suivant
 node_t * list_next(node_t * node, void * data) {
-    return node->next;
+  return node->next;
 }
 
-// Ajouter un maillon en tête de liste
+// Ajouter un maillon en tÃªte de liste
 node_t * list_insert(node_t * head, void * data) {
     node_t * node = (node_t*)malloc(sizeof(node_t));
     if (node == NULL)
@@ -73,7 +67,7 @@ node_t * list_append(node_t * head, void * data) {
 
 }
 
-// Supprime la première occurence dans la liste
+// Supprime la premiÃ¨re occurence dans la liste
 node_t * list_remove(node_t * head, void * data) {
     node_t * temp = head;
     node_t * prev = NULL;
@@ -98,7 +92,7 @@ node_t * list_remove(node_t * head, void * data) {
 }
 
 
-//Supprime la tête de liste
+//Supprime la tÃªte de liste
 node_t * list_headRemove(node_t * head) {
     if (head == NULL)
         return NULL;
@@ -110,7 +104,7 @@ node_t * list_headRemove(node_t * head) {
     return head;
 }
 
-// Détruit la liste
+// DÃ©truit la liste
 void list_destroy(node_t * head) {
     node_t * current = head;
     node_t * next;
@@ -126,26 +120,8 @@ void list_destroy(node_t * head) {
 
 void list_print(node_t * head) {
   while (head != NULL) {
-     printf("%d->", head->data);
+     printf("%p->", head->data);
      head = head->next;
   }
   printf("NULL");
-}
-
-
-int main(void) {
-    node_t * head = list_create();
-
-    head = list_insert(head, 5);
-    head = list_insert(head, 8);
-    head = list_insert(head, 19);
-    head = list_headRemove(head);
-    head = list_remove(head, 5);
-    head = list_append(head, 32);
-    list_get_data(head);
-    printf("||");
-    list_set_data(head, 4);
-    list_print(head);
-
-    return 0;
 }

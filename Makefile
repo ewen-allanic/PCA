@@ -2,7 +2,9 @@ CC = gcc
 CFLAGS = -W -Wall
 LDFLAGS =
 EXEC = prog
-SRC = $(wildcard *.c)
+SRCS = srcs/
+HEADS = headers/
+SRC = $(SRCS)node.c $(SRCS)main.c
 OBJ = $(SRC:.c=.o)
 
 all: $(EXEC)
@@ -10,7 +12,7 @@ all: $(EXEC)
 prog: $(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 
-main.o: node.h
+main.o: $(HEADS)node.h $(HEADS)cell.h $(HEADS)token.h
 
 %.o: %.c
 	@$(CC) -o $@ -c $< $(CFLAGS)
