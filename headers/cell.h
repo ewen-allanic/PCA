@@ -1,6 +1,6 @@
 typedef struct cell {
-  char * string;
-  double value;
+  char * str;
+  double val;
   s_token token;
   
 } s_cell;
