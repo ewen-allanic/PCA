@@ -7,10 +7,14 @@ int cell_analyse(s_cell * cell) {
   char * strWord = strtok(/*str*/, separators);
   while (strWord != NULL) {
     // Si c'est une valeur
-    sscanf(strWord, "%lf", &cell->val);
+    if(sscanf(strWord, "%lf", &cell->val) == 1) {
+      return 0;
+    }
 
     // Si c'est une référence
-    sscanf(strWord, "%[A-Z]%d", &col, &ligne);
+    if (sscanf(strWord, "%[A-Z]%d", &col, &ligne) == 2) {
+      
+    }
 
     // Compare avec les opérateurs
 
